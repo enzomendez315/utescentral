@@ -6,7 +6,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!
 
 const handler = NextAuth({
   session: {
-    strategy: 'jwt'
+    strategy: "jwt"
   },
   providers: [
     GoogleProvider({
@@ -17,7 +17,7 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ account, profile }) {
       if (!profile?.email) {
-        throw new Error('No profile found.')
+        throw new Error("No profile found.")
       }
 
       // Create or update user here
@@ -34,6 +34,9 @@ const handler = NextAuth({
       //     name: profile.name,
       //   }
       // })
+
+      console.log("Account details:", account);
+      console.log("Profile details:", profile);
 
       return true;
     }
